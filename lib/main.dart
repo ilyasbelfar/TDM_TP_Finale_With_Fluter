@@ -40,6 +40,8 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  var _isFavorite = false;
+
   @override
   Widget build(BuildContext context) {
     return Material(
@@ -96,8 +98,11 @@ class _HomeState extends State<Home> {
                     vertical: 12,
                   ),
                   shape: StadiumBorder(),
-                  child: Icon(Icons.favorite_outline, color: Colors.blue.shade400,),
+                  child: Icon(_isFavorite?Icons.favorite:Icons.favorite_outline, color: Colors.blue.shade400,),
                   onPressed: () {
+                    setState(() {
+                      _isFavorite=!_isFavorite;
+                    });
                   },
                 ),
                 Expanded(
