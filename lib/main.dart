@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 void main() {
   runApp(MyApp());
@@ -44,7 +46,15 @@ class _HomeState extends State<Home> {
 
   @override
   void initState() {
+    requestPermission();
     super.initState();
+  }
+
+  void requestPermission() async {
+    var status = await Permission.storage.status;
+    if(!status.isGranted) {
+      await Permission.storage.request();
+    }
   }
 
   @override
