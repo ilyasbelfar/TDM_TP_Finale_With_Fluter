@@ -14,7 +14,20 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
       ),
       home: Scaffold(
-        appBar: AppBar(title: const Text("MusicService")),
+        appBar: AppBar(title: const Text("MusicService"),
+          actions: [
+            PopupMenuButton(
+              icon: Icon(Icons.menu),
+              color: Colors.white,
+              itemBuilder: (context) => [
+                PopupMenuItem<int>(
+                  value: 0,
+                  child: Text("Mes Favoris",style: TextStyle(color: Colors.black),),
+                ),
+              ],
+              onSelected: (item) => {print(item)},
+            ),
+          ],),
         body: Home(),
       ),
     );
