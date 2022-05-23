@@ -24,14 +24,9 @@ class MyApp extends StatelessWidget {
               color: Colors.white,
               onSelected: (choix) async {
                 if(choix==1) {
-                  final result = await FilePicker.platform.pickFiles(
-                    dialogTitle: 'Select a music file.',
-                    allowMultiple: false,
-                    type: FileType.custom,
-                    allowedExtensions: ['mp3'],
-                  );
-                  if (result != null && result.files.isNotEmpty && result.files.single.path != null) {
-                    print(result.files.first.path);
+                  final path = await FilePicker.getFilePath();
+                  if (path != null) {
+                    print(path);
                   }
               }},
               itemBuilder: (context) => [
