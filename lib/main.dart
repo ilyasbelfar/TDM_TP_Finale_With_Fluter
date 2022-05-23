@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
+import 'package:file_picker/file_picker.dart';
 
 void main() {
   runApp(MyApp());
@@ -21,13 +22,28 @@ class MyApp extends StatelessWidget {
             PopupMenuButton(
               icon: Icon(Icons.menu),
               color: Colors.white,
+              onSelected: (choix) async {
+                if(choix==1) {
+                  final result = await FilePicker.platform.pickFiles(
+                    dialogTitle: 'Select a music file.',
+                    allowMultiple: false,
+                    type: FileType.custom,
+                    allowedExtensions: ['mp3'],
+                  );
+                  if (result != null && result.files.isNotEmpty && result.files.single.path != null) {
+                    print(result.files.first.path);
+                  }
+              }},
               itemBuilder: (context) => [
                 PopupMenuItem<int>(
                   value: 0,
                   child: Text("Mes Favoris",style: TextStyle(color: Colors.black),),
                 ),
+                PopupMenuItem<int>(
+                  value: 1,
+                  child: Text("Parcourir Musiques",style: TextStyle(color: Colors.black),),
+                ),
               ],
-              onSelected: (item) => {print(item)},
             ),
           ],),
         body: Home(),
