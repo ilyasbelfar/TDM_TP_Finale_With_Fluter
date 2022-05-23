@@ -43,6 +43,11 @@ class _HomeState extends State<Home> {
   var _isFavorite = false;
 
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Material(
       child: Center(
@@ -55,6 +60,22 @@ class _HomeState extends State<Home> {
                 "assets/images/music_clipart.jpg",
               ),
             ),
+        // Slider(
+        //   activeColor: Colors.pink,
+        //   inactiveColor: Colors.blueGrey,
+        //   onChanged: (value) {
+        //     print(value);
+        //   },
+        //   onChangeStart: (value) {
+        //     print(value);
+        //   },
+        //   onChangeEnd: (value) {
+        //     print(value);
+        //   },
+        //   value: 4,
+        //   min: 0.0,
+        //   max: 15,
+        // ),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: <Widget>[
@@ -98,7 +119,7 @@ class _HomeState extends State<Home> {
                     vertical: 12,
                   ),
                   shape: StadiumBorder(),
-                  child: Icon(_isFavorite?Icons.favorite:Icons.favorite_outline, color: Colors.blue.shade400,),
+                  child: Icon(_isFavorite?Icons.favorite:Icons.favorite_outline, color: Colors.red,),
                   onPressed: () {
                     setState(() {
                       _isFavorite=!_isFavorite;
