@@ -2,6 +2,7 @@
     package="ilyas.belfar.tp_tdm">
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
    <application
         android:label="tp_tdm"
         android:name="${applicationName}"
