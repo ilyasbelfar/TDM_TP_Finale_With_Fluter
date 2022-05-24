@@ -20,7 +20,7 @@ class FavorisScreen extends StatelessWidget {
           itemCount :  10,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
-              title: Text("title $index"),
+              title: Text("title $index", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
               leading: Icon(Icons.music_note),
               isThreeLine: false,
               dense: true,
