@@ -21,7 +21,16 @@ class FavorisScreen extends StatelessWidget {
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
               title: Text("title $index", style: TextStyle(fontWeight: FontWeight.bold, fontSize: 20),),
-              leading: Icon(Icons.music_note),
+              leading: RaisedButton(
+                color: Colors.grey,
+                padding: EdgeInsets.symmetric(
+                  vertical: 12,
+                ),
+                shape: CircleBorder(),
+                child: Icon(Icons.music_note, color: Colors.red,),
+                onPressed: () {
+                },
+              ),
               isThreeLine: false,
               dense: true,
               contentPadding: EdgeInsets.all(10.0),
@@ -134,7 +143,7 @@ class _HomeState extends State<Home> {
                 RaisedButton(
                   color: Colors.grey,
                   padding: EdgeInsets.symmetric(
-                    vertical: 12,
+                    vertical: 10,
                   ),
                   shape: CircleBorder(),
                   child: Icon(Icons.arrow_back_ios, color: Colors.blue.shade400,),
@@ -144,7 +153,7 @@ class _HomeState extends State<Home> {
         RaisedButton(
           color: Colors.grey,
           padding: EdgeInsets.symmetric(
-            vertical: 12,
+            vertical: 10,
           ),
           shape: CircleBorder(),
           child: Icon(_isPlaying?Icons.pause:Icons.play_arrow_rounded, color: Colors.blue.shade400,),
@@ -157,7 +166,7 @@ class _HomeState extends State<Home> {
                 RaisedButton(
                   color: Colors.grey,
                   padding: EdgeInsets.symmetric(
-                    vertical: 12,
+                    vertical: 10,
                   ),
                   shape: CircleBorder(),
                   child: Icon(Icons.arrow_forward_ios, color: Colors.blue.shade400,),
@@ -171,9 +180,9 @@ class _HomeState extends State<Home> {
                 RaisedButton(
                   color: Colors.grey,
                   padding: EdgeInsets.symmetric(
-                    vertical: 12,
+                    vertical: 10,
                   ),
-                  shape: StadiumBorder(),
+                  shape: CircleBorder(),
                   child: Icon(_isFavorite?Icons.favorite:Icons.favorite_outline, color: Colors.red,),
                   onPressed: () {
                     setState(() {
