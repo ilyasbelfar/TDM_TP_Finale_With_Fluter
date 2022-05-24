@@ -149,7 +149,7 @@ class _HomeState extends State<Home> {
                     vertical: 10,
                   ),
                   shape: CircleBorder(),
-                  child: Icon(Icons.arrow_back_ios, color: Colors.blue.shade400,),
+                  child: Icon(Icons.arrow_back_ios, color: Colors.black,),
                   onPressed: () {
                     _query();
                   },
@@ -160,7 +160,7 @@ class _HomeState extends State<Home> {
             vertical: 10,
           ),
           shape: CircleBorder(),
-          child: Icon(_isPlaying?Icons.pause:Icons.play_arrow_rounded, color: Colors.blue.shade400,),
+          child: Icon(_isPlaying?Icons.pause:Icons.play_arrow_rounded, color: Colors.black,),
           onPressed: () {
             setState(() {
               _isPlaying=!_isPlaying;
@@ -173,7 +173,7 @@ class _HomeState extends State<Home> {
                     vertical: 10,
                   ),
                   shape: CircleBorder(),
-                  child: Icon(Icons.arrow_forward_ios, color: Colors.blue.shade400,),
+                  child: Icon(Icons.arrow_forward_ios, color: Colors.black,),
                   onPressed: () {
                   },
                 ),
