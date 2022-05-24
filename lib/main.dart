@@ -4,8 +4,19 @@ import 'package:permission_handler/permission_handler.dart';
 import 'package:file_picker/file_picker.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()),);
 }
+
+class FavorisScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Favoris'),
+      ),
+      body: Center(
+          child: Text('Favoris Screen')
+      ),);}}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
@@ -23,8 +34,12 @@ class MyApp extends StatelessWidget {
               icon: Icon(Icons.menu),
               color: Colors.white,
               onSelected: (choix) async {
+                if(choix==0) {
+                  Navigator.push(context, MaterialPageRoute(builder: (context) => FavorisScreen()),
+                  );
+                }
                 if(choix==1) {
-                  final path = await FilePicker.getFilePath();
+                  final path = await FilePicker.getFilePath(type: FileType.audio);
                   if (path != null) {
                     print(path);
                   }
