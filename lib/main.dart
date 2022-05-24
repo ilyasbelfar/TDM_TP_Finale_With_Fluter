@@ -15,7 +15,22 @@ class FavorisScreen extends StatelessWidget {
         title: Text('Favoris'),
       ),
       body: Center(
-          child: Text('Favoris Screen')
+        child: ListView.builder(
+          scrollDirection: Axis.vertical,
+          itemCount :  10,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: Text("title $index"),
+              leading: Icon(Icons.music_note),
+              isThreeLine: false,
+              dense: true,
+              contentPadding: EdgeInsets.all(10.0),
+              onTap: () {
+                print('index: $index');
+              },
+            );
+          },
+        ),
       ),);}}
 
 class MyApp extends StatelessWidget {
