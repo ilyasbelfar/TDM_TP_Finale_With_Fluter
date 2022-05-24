@@ -136,7 +136,7 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.symmetric(
                     vertical: 12,
                   ),
-                  shape: StadiumBorder(),
+                  shape: CircleBorder(),
                   child: Icon(Icons.arrow_back_ios, color: Colors.blue.shade400,),
                   onPressed: () {
                   },
@@ -146,7 +146,7 @@ class _HomeState extends State<Home> {
           padding: EdgeInsets.symmetric(
             vertical: 12,
           ),
-          shape: StadiumBorder(),
+          shape: CircleBorder(),
           child: Icon(_isPlaying?Icons.pause:Icons.play_arrow_rounded, color: Colors.blue.shade400,),
           onPressed: () {
             setState(() {
@@ -159,7 +159,7 @@ class _HomeState extends State<Home> {
                   padding: EdgeInsets.symmetric(
                     vertical: 12,
                   ),
-                  shape: StadiumBorder(),
+                  shape: CircleBorder(),
                   child: Icon(Icons.arrow_forward_ios, color: Colors.blue.shade400,),
                   onPressed: () {
                   },
