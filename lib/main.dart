@@ -69,6 +69,7 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> {
   var _isFavorite = false;
+  var _isPlaying = false;
 
   @override
   void initState() {
@@ -131,8 +132,11 @@ class _HomeState extends State<Home> {
             vertical: 12,
           ),
           shape: StadiumBorder(),
-          child: Icon(Icons.pause, color: Colors.blue.shade400,),
+          child: Icon(_isPlaying?Icons.pause:Icons.play_arrow_rounded, color: Colors.blue.shade400,),
           onPressed: () {
+            setState(() {
+              _isPlaying=!_isPlaying;
+            });
           },
         ),
                 RaisedButton(
