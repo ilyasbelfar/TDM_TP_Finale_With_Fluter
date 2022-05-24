@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:tp_tdm/database_helper.dart';
 
 void main() {
   runApp(MaterialApp(debugShowCheckedModeBanner: false, home: MyApp()),);
@@ -95,6 +96,8 @@ class _HomeState extends State<Home> {
   var _isFavorite = false;
   var _isPlaying = false;
 
+  final dbHelper = DatabaseHelper.instance;
+
   @override
   void initState() {
     requestPermission();
@@ -148,6 +151,7 @@ class _HomeState extends State<Home> {
                   shape: CircleBorder(),
                   child: Icon(Icons.arrow_back_ios, color: Colors.blue.shade400,),
                   onPressed: () {
+                    _query();
                   },
                 ),
         RaisedButton(
@@ -188,6 +192,7 @@ class _HomeState extends State<Home> {
                     setState(() {
                       _isFavorite=!_isFavorite;
                     });
+                    _insert();
                   },
                 ),
                 Expanded(
@@ -199,5 +204,20 @@ class _HomeState extends State<Home> {
         ),
       ),
     );
+  }
+  void _insert() async {
+    // row to insert
+    Map<String, dynamic> row = {
+      'songName' : 'Artisan & Didin Canon 16 - Glock',
+      'songPath' : 'Glock.mp3'
+    };
+    final id = await dbHelper.insert(row);
+    print('inserted row id: $id');
+  }
+
+  void _query() async {
+    final allRows = await dbHelper.queryAllRows();
+    print('query all rows:');
+    allRows.forEach((row) => print(row));
   }
 }

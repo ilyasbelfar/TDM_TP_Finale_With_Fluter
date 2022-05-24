@@ -37,6 +37,8 @@ dependencies:
   sqflite: ^2.0.2+1
   permission_handler: ^5.0.0+hotfix.8
   file_picker: ^1.5.1
+  path_provider: ^2.0.10
+
 
 dev_dependencies:
   flutter_test:
