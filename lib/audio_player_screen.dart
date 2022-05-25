@@ -149,7 +149,7 @@ class _AudioPlayerScreenState extends State<AudioPlayerScreen> {
             margin: EdgeInsets.only(top: 20.0),
             alignment: Alignment.center,
             child: Text(
-              "Song Name Goes Here",
+              "Songs Name Goes Here",
               style: TextStyle(
                   fontFamily: "Regular",
                   color: Colors.blueGrey,
