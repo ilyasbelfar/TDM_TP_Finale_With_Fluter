@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:permission_handler/permission_handler.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:tp_tdm/audio.dart';
 import 'package:tp_tdm/database_helper.dart';
 
 void main() {
@@ -93,8 +94,10 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  MethodChannel _channel = const MethodChannel('ilyas.belfar.tp_tdm/musicservice');
   var _isFavorite = false;
   var _isPlaying = false;
+  List<Audio> _audioList = [];
 
   final dbHelper = DatabaseHelper.instance;
 
@@ -108,6 +111,20 @@ class _HomeState extends State<Home> {
     var status = await Permission.storage.status;
     if(!status.isGranted) {
       await Permission.storage.request();
+    }
+  }
+
+  Future<List<Audio>> getAudios() async {
+    if(_audioList.length == 0) {
+      List<dynamic> musicMapList =
+      await _channel.invokeMethod('audio_picker.getAudios');
+      List<Audio> musicList =
+      musicMapList.map((musicMap) => Audio.fromMap(musicMap)).toList();
+      _audioList = musicList;
+      return _audioList;
+    }
+    else {
+      return _audioList;
     }
   }
 
@@ -175,6 +192,7 @@ class _HomeState extends State<Home> {
                   shape: CircleBorder(),
                   child: Icon(Icons.arrow_forward_ios, color: Colors.black,),
                   onPressed: () {
+                    print(getAudios());
                   },
                 ),
               ],
