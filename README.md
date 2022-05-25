@@ -1,16 +1,41 @@
-# tp_tdm
+# Flutter_Audio_Player
 
-TP TDM.
+Flutter Audio Player with all the fuctionality to build your own custom music player!!
 
-## Getting Started
+This repository involevs following functionality :-
+- Using Native Controlllers, you can play audio in the background mode,
+- You can fast forward or descrease the speed of the audio.
+- Use of native bridge allowes you to customise player on the go!
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+Flutter Audio player with native controller to manage audio in background. For android, implemented foreground service. This repository also demonstrate the native code bridge to flutter.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Android Pre Requirements :- 
+
+1. Add Exoplayer dependencies in your app level build.gradle file
+
+implementation 'com.google.android.exoplayer:exoplayer:2.9.6'
+implementation 'com.google.android.exoplayer:exoplayer-ui:2.9.6'
+
+
+2. Add following permissions in the AndroidMenifest.xml file :-
+
+<uses-permission android:name="android.permission.INTERNET"/>
+<uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+<uses-permission android:name="android.permission.WAKE_LOCK"/>
+
+3.Register Service(PlayerService) in application tag of your AndroidMenifest.xml file :-
+
+<service android:name=".player.PlayerService" android:enabled="true">
+<intent-filter>
+<action android:name="com.auditorium.player.PlayerService" />
+</intent-filter>
+</service>
+
+
+Ios Pre Requirements :-
+
+1.Enable Background service in your project by turning on the "Background Modes" -> Audio, AirPlay, and Picture in Picture
+
+Minimum iOS OS version require: 10.0
