@@ -3,7 +3,7 @@ class Audio {
   final String title;
   final String path;
 
-  static Audio fromJson(Map < String, Object ? > json) {
-    return Audio(json['title'] !as String, json['path'] !as String);
+  static Audio fromMap(Map < String, Object ? > map) {
+    return Audio(map['title'] !as String, map['path'] !as String);
   }
 }
